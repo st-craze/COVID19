@@ -2,7 +2,7 @@
 	COVID 19 Data Exploration
 	https://ourworldindata.org/covid-deaths
 
-	Skills used: JOINs, CTEs, Aggregate Functions, Windows Functions, Data Type Conversion
+	Skills used: JOINs, CTEs, Views, Aggregate Functions, Windows Functions, Data Type Conversion
 */
 
 SELECT *
@@ -60,7 +60,7 @@ SELECT location, MAX(cast(total_deaths as int)) AS total_death_count
 FROM PortfolioProject..covidDeaths
 WHERE continent IS NULL
 AND location NOT LIKE '%income%'
-AND location NOT LIKE '% Union'
+AND location NOT IN ('World', 'European Union', 'International')
 GROUP BY location
 ORDER BY 2 DESC
 
